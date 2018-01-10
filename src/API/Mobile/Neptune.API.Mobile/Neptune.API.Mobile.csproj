@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Neptune.API.Mobile.Models\Neptune.API.Mobile.Models.csproj" />
+    <ProjectReference Include="..\..\Common\Neptune.API.Common\Neptune.API.Common.csproj" />
+    <ProjectReference Include="..\..\..\Services\Discussions\Neptune.Services.Discussions.Messages\Neptune.Services.Discussions.Messages.csproj" />
+    <ProjectReference Include="..\..\..\Services\Profiles\Neptune.Services.Profiles.Messages\Neptune.Services.Profiles.Messages.csproj" />
+    <ProjectReference Include="..\..\..\Services\Search\Neptune.Services.Search.Messages\Neptune.Services.Search.Messages.csproj" />
+    <ProjectReference Include="..\..\..\Services\Identity\Neptune.Services.Identity.Messages\Neptune.Services.Identity.Messages.csproj" />
+  </ItemGroup>
+
+</Project>

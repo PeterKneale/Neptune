@@ -22,7 +22,8 @@
     <ProjectReference Include="..\..\..\Services\Discussions\Neptune.Services.Discussions.Messages\Neptune.Services.Discussions.Messages.csproj" />
     <ProjectReference Include="..\..\..\Services\Profiles\Neptune.Services.Profiles.Messages\Neptune.Services.Profiles.Messages.csproj" />
     <ProjectReference Include="..\..\..\Services\Search\Neptune.Services.Search.Messages\Neptune.Services.Search.Messages.csproj" />
-    <ProjectReference Include="..\..\..\Services\Identity\Neptune.Services.Identity.Messages\Neptune.Services.Identity.Messages.csproj" />
+    <ProjectReference Include="..\..\..\Services\Questions\Neptune.Services.Questions.Messages\Neptune.Services.Questions.Messages.csproj" />
+    <ProjectReference Include="..\..\..\Services\Identities\Neptune.Services.Identities.Messages\Neptune.Services.Identities.Messages.csproj" />
   </ItemGroup>
 
 </Project>

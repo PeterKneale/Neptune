@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Neptune.Services.Common\Neptune.Services.Common.csproj" />
+    <PackageReference Include="FluentMigrator" Version="1.6.2" />
   </ItemGroup>
 
 </Project>

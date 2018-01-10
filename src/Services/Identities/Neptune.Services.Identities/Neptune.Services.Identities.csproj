@@ -6,7 +6,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Neptune.Services.Discussions.Messages\Neptune.Services.Discussions.Messages.csproj" />
+    <ProjectReference Include="..\Neptune.Services.Identities.Messages\Neptune.Services.Identities.Messages.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

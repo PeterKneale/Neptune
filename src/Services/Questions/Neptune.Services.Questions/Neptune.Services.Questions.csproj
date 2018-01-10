@@ -1,15 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Neptune.Services.Common\Neptune.Services.Common.csproj" />
-    <ProjectReference Include="..\Neptune.Services.Profiles.Database\Neptune.Services.Profiles.Database.csproj" />
-    <ProjectReference Include="..\Neptune.Services.Profiles.Messages\Neptune.Services.Profiles.Messages.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Autofac" Version="4.6.2" />
     <PackageReference Include="Dapper.SimpleCRUD.NetCore" Version="1.0.0" />
     <PackageReference Include="EasyNetQ" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Neptune.Services.Questions.Messages\Neptune.Services.Questions.Messages.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

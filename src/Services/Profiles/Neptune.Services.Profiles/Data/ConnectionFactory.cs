@@ -6,7 +6,10 @@ namespace Neptune.Services.Profiles.Data
     {
         public override string GetConnectionString()
         {
-            return "Server=.;Database=profiles;User id=sa;Password=password;MultipleActiveResultSets=true";
+            var host = "sql";
+            var username = "sa";
+            var password = "Password123%";
+            return $"Server={host};Database=profiles;User id={username};Password={password};MultipleActiveResultSets=true";
         }
     }
 }

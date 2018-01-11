@@ -9,8 +9,11 @@
 
     public class Config : IConfig
     {
-        public string QuestionsConnectionString => "Server=.;Database=questions;User id=sa;Password=password;MultipleActiveResultSets=true";
-        public string ProfilesConnectionString => "Server=.;Database=profiles;User id=sa;Password=password;MultipleActiveResultSets=true";
-        public string MasterConnectionString => "Server=.;Database=master;User id=sa;Password=password;MultipleActiveResultSets=true";
+        private const string host = "sql";
+        private const string username = "sa";
+        private const string password = "Password123%";
+        public string QuestionsConnectionString => $"Server={host};Database=questions;User id={username};Password={password};MultipleActiveResultSets=true";
+        public string ProfilesConnectionString => $"Server={host};Database=profiles;User id={username};Password={password};MultipleActiveResultSets=true";
+        public string MasterConnectionString => $"Server={host};Database=master;User id={username};Password={password};MultipleActiveResultSets=true";
     }
 }

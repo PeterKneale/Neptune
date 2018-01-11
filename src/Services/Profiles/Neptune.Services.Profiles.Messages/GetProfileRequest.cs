@@ -11,6 +11,6 @@ namespace Neptune.Services.Profiles.Messages
 
     public class GetProfileResponse : IQueryResult
     {
-        public ProfileModel Profile { get; set; }
+        public ProfileDto Profile { get; set; }
     }
 }

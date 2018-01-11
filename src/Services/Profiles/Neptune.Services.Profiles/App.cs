@@ -23,13 +23,8 @@ namespace Neptune.Services.Profiles
 
         public void Run()
         {
-            
             SimpleCRUD.SetDialect(SimpleCRUD.Dialect.PostgreSQL);
-
             SetupToRespond<GetProfileRequest, GetProfileResponse>();
-
-            var response = _bus.Request<GetProfileRequest, GetProfileResponse>(new GetProfileRequest { Id = 1 });
-            _logger.LogInformation(response.Profile.Name);
         }
 
         private void Setup<TCommand>()

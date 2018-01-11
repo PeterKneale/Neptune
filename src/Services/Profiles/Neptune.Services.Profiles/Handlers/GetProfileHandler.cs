@@ -23,7 +23,7 @@ namespace Neptune.Services.Profiles.Handlers
             }
             return new GetProfileResponse
             {
-                Profile = new ProfileModel { Id = data.Id, Name = data.Name }
+                Profile = new ProfileDto { Id = data.Id, Name = data.Name }
             };
         }
     }

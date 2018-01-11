@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.0" />
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Services\Discussions\Neptune.Services.Discussions.Messages\Neptune.Services.Discussions.Messages.csproj" />
+    <ProjectReference Include="..\..\..\Services\Profiles\Neptune.Services.Profiles.Messages\Neptune.Services.Profiles.Messages.csproj" />
+    <ProjectReference Include="..\..\..\Services\Search\Neptune.Services.Search.Messages\Neptune.Services.Search.Messages.csproj" />
+    <ProjectReference Include="..\..\..\Services\Questions\Neptune.Services.Questions.Messages\Neptune.Services.Questions.Messages.csproj" />
+    <ProjectReference Include="..\..\..\Services\Identities\Neptune.Services.Identities.Messages\Neptune.Services.Identities.Messages.csproj" />
+    <ProjectReference Include="..\Neptune.Apps.WebAPI.Models\Neptune.Apps.WebAPI.Models.csproj" />
+  </ItemGroup>
+
+</Project>

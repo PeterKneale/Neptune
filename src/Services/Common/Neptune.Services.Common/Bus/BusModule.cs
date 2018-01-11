@@ -8,7 +8,7 @@ namespace Neptune.Services.Common.Bus
     {
         protected override void Load(ContainerBuilder builder)
         {
-            var bus = RabbitHutch.CreateBus("host=localhost;port=32772");
+            var bus = RabbitHutch.CreateBus("host=rabbitmq;timeout=120;product=neptune");
             builder.RegisterInstance(bus).SingleInstance();
 
             builder.RegisterType<Dispatcher>().As<ICommandDispatcher>();

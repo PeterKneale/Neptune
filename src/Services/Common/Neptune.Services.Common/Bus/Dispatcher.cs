@@ -5,6 +5,9 @@ using Microsoft.Extensions.Logging;
 
 namespace Neptune.Services.Common.Bus
 {
+
+    // NOTE: THIS SHOULD BE IN A SERVICE CLIENT LIBRRARY SO THAT THE API DOESNT HAVE ALL THE BAGGED OF THE OTHER INFRASTRUCTURE
+
     public interface ICommandDispatcher
     {
         Task Send<TCommand>(TCommand command)

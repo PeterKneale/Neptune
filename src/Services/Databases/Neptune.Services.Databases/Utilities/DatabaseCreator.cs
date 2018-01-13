@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using Polly;
+using Polly.Retry;
 using System;
 using System.Data.SqlClient;
 using System.Threading;
@@ -18,18 +20,31 @@ namespace Neptune.Services.Databases
         {
             _log = log;
         }
+
         public void Create(string masterConnectionString, string appConnectionString)
+        {
+            Policy
+                .Handle<Exception>()
+                .WaitAndRetry(5, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
+                    (exception, timeSpan, retryCount) => {
+                        _log.LogError(exception, $"Attempt {retryCount}");
+                    })
+                .Execute(() => Provision(masterConnectionString, appConnectionString));
+        }
+
+        private void Provision(string masterConnectionString, string appConnectionString)
         {
             try
             {
                 var database = GetDatabaseName(appConnectionString);
                 _log.LogInformation($"Creating database {database} if necessary");
 
-                if (!CheckDatabaseExists(masterConnectionString, database))
+                if (CheckDatabaseExists(masterConnectionString, database))
                 {
-                    CreateDatabase(masterConnectionString, database);
+                    _log.LogInformation($"Database {database} already exists");
                     return;
                 }
+                CreateDatabase(masterConnectionString, database);
             }
             catch (Exception ex)
             {

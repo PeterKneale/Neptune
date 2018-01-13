@@ -17,7 +17,7 @@ namespace Neptune.Apps.Web.Controllers
             _queries = queries;
         }
         
-        public async Task<IActionResult> Index(int id)
+        public async Task<IActionResult> Index(Guid id)
         {
             var response = await _queries.Request<GetProfileRequest, GetProfileResponse>(new GetProfileRequest { Id = id });
             var profile = response.Profile;
@@ -29,7 +29,7 @@ namespace Neptune.Apps.Web.Controllers
             
             var page = new UserPageViewModel
             {
-                Profile = Mapper.Map<ProfileDto, ProfileViewModel>(profile)
+                Profile = Mapper.Map<ProfileDto, UserViewModel>(profile)
             };
             return View(page);
         }

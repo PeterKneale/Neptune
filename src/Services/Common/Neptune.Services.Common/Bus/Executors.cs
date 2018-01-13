@@ -67,7 +67,7 @@ namespace Neptune.Services.Common.Bus
 
             AnnounceExecuted(command, handler, stopwatch.ElapsedMilliseconds);
         }
-        
+
         public async Task<TResult> ExecuteQuery<TQuery, TResult>(TQuery query)
             where TQuery : IQuery
             where TResult : IQueryResult
@@ -84,8 +84,8 @@ namespace Neptune.Services.Common.Bus
 
             AnnounceHandlerFound(query, handler);
 
-            var stopwatch = Stopwatch.StartNew();
             TResult result;
+            var stopwatch = Stopwatch.StartNew();
             try
             {
                 result = await handler.Execute(query);
@@ -95,7 +95,6 @@ namespace Neptune.Services.Common.Bus
                 AnnounceFailed(handler, query, e);
                 throw;
             }
-
             stopwatch.Stop();
 
             AnnounceExecuted(query, handler, stopwatch.ElapsedMilliseconds);
@@ -116,7 +115,7 @@ namespace Neptune.Services.Common.Bus
             }
 
             var handlers = _resolver.Resolve<IEnumerable<IEventHandler<T>>>();
-            foreach(var handler in handlers)
+            foreach (var handler in handlers)
             {
                 AnnounceHandlerFound(evnt, handler);
 
@@ -138,10 +137,10 @@ namespace Neptune.Services.Common.Bus
 
         public void AnnounceExecuting(IMessage message)
         {
-            var name = message.GetType().Name;
+            var messageType = message.GetType().Name;
             var payload = JsonConvert.SerializeObject(message);
-            _log.LogInformation($"Executing {name}");
-            _log.LogDebug($"Executing {name} with body {payload}");
+            _log.LogInformation("Executing {messageType}", messageType);
+            _log.LogDebug("Executing {messageType} with body {payload}", messageType, payload);
         }
 
         protected void AnnounceResponse(IMessage query, IMessage response)
@@ -161,9 +160,9 @@ namespace Neptune.Services.Common.Bus
 
         protected void AnnounceExecuted(IMessage message, IHandler handler, long ms)
         {
-            var messageName = message.GetType().Name;
-            var handlerName = handler.GetType().Name;
-            _log.LogInformation($"Handler {handlerName} executed {messageName}. Duration: {ms}ms.");
+            var messageType = message.GetType().Name;
+            var handlerType = handler.GetType().Name;
+            _log.LogInformation($"Handler {handlerType} executed {messageType}. Duration: {ms}ms.", handlerType, messageType);
         }
 
         protected void AnnounceFailed(IHandler handler, IMessage message, Exception ex)

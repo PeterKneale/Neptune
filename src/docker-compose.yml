@@ -1,63 +1,50 @@
 version: '3'
-
 services:
+
   neptune.app.web:
     image: neptune.app.web
     build:
       context: .
       dockerfile: Apps/Web/Neptune.Apps.Web/Dockerfile
-    depends_on:
-      - neptune.services.multihost
+    ports:
+      - "80:80"
+    networks:
+      - neptune_network
 
   neptune.apps.webapi:
     image: neptune.apps.webapi
     build:
       context: .
       dockerfile: Apps/WebAPI/Neptune.Apps.WebAPI/Dockerfile
-    depends_on:
-      - neptune.services.multihost
+    ports:
+      - "81:80"
+    networks:
+      - neptune_network
 
-  neptune.services.multihost:
-    image: neptune.services.multihost
+  neptune.services.profiles:
+    image: neptune.services.profiles
     build:
       context: .
-      dockerfile: Services/Hosts/Neptune.Services.MultiHost/Dockerfile
-    depends_on:
-      - sql
-      - rabbitmq
-      - elasticsearch
-  sql:
-    image: microsoft/mssql-server-linux:2017-latest
-    environment:
-      - ACCEPT_EULA=Y
-      - SA_PASSWORD=Password123%
-      - SQL_PID=Standard
+      dockerfile: Services/Profiles/Neptune.Services.Profiles/Dockerfile
+    networks:
+      - neptune_network
+
+  neptune.services.databases:
+    image: neptune.services.databases
+    build:
+      context: .
+      dockerfile: Services/Databases/Neptune.Services.Databases/Dockerfile
+    networks:
+      - neptune_network
       
-  rabbitmq:
-    image: rabbitmq:3-management-alpine
-    #ports:
-    # - "15672:15672"
+  neptune.services.questions:
+    image: neptune.services.questions
+    build:
+      context: .
+      dockerfile: Services/Questions/Neptune.Services.Questions/Dockerfile
+    networks:
+      - neptune_network
 
-  elasticsearch:
-    image: elasticsearch:alpine
-
-  graylog:
-    image: graylog/graylog:2.4.0-1
-    environment:
-      - GRAYLOG_PASSWORD_SECRET=password_secret
-      # Password: admin
-      - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
-      - GRAYLOG_WEB_ENDPOINT_URI=http://127.0.0.1:9000/api
-    depends_on:
-      - graylog.mongo
-      - graylog.elasticsearch
-
-  graylog.mongo:
-    image: mongo:3
-
-  graylog.elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.5
-    environment:
-      - http.host=0.0.0.0
-      - xpack.security.enabled=false
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+networks:
+  neptune_network:
+    external: true

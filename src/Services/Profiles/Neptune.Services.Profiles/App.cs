@@ -1,14 +1,16 @@
 ﻿using Autofac;
+using AutoMapper;
 using Dapper;
 using EasyNetQ;
 using Microsoft.Extensions.Logging;
 using Neptune.Services.Common;
 using Neptune.Services.Common.Bus;
+using Neptune.Services.Profiles.Handlers;
 using Neptune.Services.Profiles.Messages;
 
 namespace Neptune.Services.Profiles
 {
-    public class App : IRun
+    public class App : IService
     {
         private readonly IBus _bus;
         private readonly ILogger<App> _logger;
@@ -20,10 +22,15 @@ namespace Neptune.Services.Profiles
             _logger = logger;
             _resolver = resolver;
         }
-
+        
         public void Run()
         {
             SimpleCRUD.SetDialect(SimpleCRUD.Dialect.PostgreSQL);
+            Mapper.Initialize(x =>
+            {
+                x.AddProfile<Mappings>();
+            });
+            Mapper.AssertConfigurationIsValid();
             SetupToRespond<GetProfileRequest, GetProfileResponse>();
         }
 

@@ -2,10 +2,12 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.6.2" />
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
     <PackageReference Include="EasyNetQ" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Neptune.Services.Common\Neptune.Services.Common.csproj" />
     <ProjectReference Include="..\Neptune.Services.Search.Messages\Neptune.Services.Search.Messages.csproj" />
   </ItemGroup>
 

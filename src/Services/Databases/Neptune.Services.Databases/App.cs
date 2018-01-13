@@ -2,21 +2,25 @@
 using Neptune.Services.Profiles.Database;
 using System;
 using Neptune.Services.Common;
+using Microsoft.Extensions.Logging;
 
 namespace Neptune.Services.Databases
 {
-    public class App : IRun
+    public class App : IService
     {
+        private readonly ILogger<App> _log;
         private readonly IConfig _config;
         private readonly IDatabaseCreator _creator;
         private readonly IDatabaseMigrator _migrator;
 
-        public App(IConfig config, IDatabaseCreator creator, IDatabaseMigrator migrator)
+        public App(ILogger<App> log, IConfig config, IDatabaseCreator creator, IDatabaseMigrator migrator)
         {
+            _log = log;
             _config = config;
             _creator = creator;
             _migrator = migrator;
         }
+        
 
         public void Run()
         {
@@ -26,9 +30,16 @@ namespace Neptune.Services.Databases
 
         private void Provision(string connection, Type migration)
         {
+            _log.LogInformation($"Provisioning {migration.FullName}");
             var assembly = System.Reflection.Assembly.GetAssembly(migration);
+
+            _log.LogInformation($"Creating db");
             _creator.Create(_config.MasterConnectionString, connection);
+
+            _log.LogInformation($"Migrating db");
             _migrator.Migrate(connection, assembly);
+
+            _log.LogInformation($"Provisioned {migration.FullName}");
         }
     }
 }

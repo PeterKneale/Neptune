@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Neptune.Apps.WebAPI.Models;
 using Neptune.Services.Common.Bus;
@@ -16,9 +17,9 @@ namespace Neptune.Apps.WebAPI.Controllers
             _queries = queries;
         }
 
-        // GET api/v1/user/5
+        // GET api/v1/user/C084EFA3-D735-A430-A4F2-6919586A491F
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> Get(Guid id)
         {
             var response = await _queries.Request<GetProfileRequest, GetProfileResponse>(new GetProfileRequest { Id = id });
             if (response.Profile == null)
@@ -30,4 +31,5 @@ namespace Neptune.Apps.WebAPI.Controllers
             return Json(model);
         }
     }
+
 }

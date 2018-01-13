@@ -11,12 +11,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Neptune.Services.Common\Neptune.Services.Common.csproj" />
-    <ProjectReference Include="..\..\Databases\Neptune.Services.Databases\Neptune.Services.Databases.csproj" />
-    <ProjectReference Include="..\..\Discussions\Neptune.Services.Discussions\Neptune.Services.Discussions.csproj" />
-    <ProjectReference Include="..\..\Identities\Neptune.Services.Identities\Neptune.Services.Identities.csproj" />
-    <ProjectReference Include="..\..\Profiles\Neptune.Services.Profiles\Neptune.Services.Profiles.csproj" />
-    <ProjectReference Include="..\..\Questions\Neptune.Services.Questions\Neptune.Services.Questions.csproj" />
-    <ProjectReference Include="..\..\Search\Neptune.Services.Search\Neptune.Services.Search.csproj" />
   </ItemGroup>
 
   <ItemGroup>

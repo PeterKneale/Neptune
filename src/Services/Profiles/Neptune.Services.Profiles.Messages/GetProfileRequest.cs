@@ -6,7 +6,7 @@ namespace Neptune.Services.Profiles.Messages
 {
     public class GetProfileRequest : IQuery
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 
     public class GetProfileResponse : IQueryResult

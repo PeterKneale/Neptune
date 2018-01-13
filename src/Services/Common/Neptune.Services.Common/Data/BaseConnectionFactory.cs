@@ -17,6 +17,15 @@ namespace Neptune.Services.Common.Data
             return connection;
         }
 
-        public abstract string GetConnectionString();
+        private string GetConnectionString()
+        {
+            var host = "sql";
+            var username = "sa";
+            var password = "Password123%";
+            var database = GetDatabaseName();
+            return $"Server={host};Database={database};User id={username};Password={password};MultipleActiveResultSets=true";
+        }
+
+        public abstract string GetDatabaseName();
     }
 }

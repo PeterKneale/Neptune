@@ -101,7 +101,7 @@ namespace Neptune.Apps.Web.Controllers
                 }
             }
 
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "Your Question has been updated";
             return RedirectToAction(nameof(Index));
         }
 

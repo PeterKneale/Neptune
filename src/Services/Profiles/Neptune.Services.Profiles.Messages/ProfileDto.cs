@@ -1,8 +1,10 @@
-﻿namespace Neptune.Services.Profiles.Messages
+﻿using System;
+
+namespace Neptune.Services.Profiles.Messages
 {
     public class ProfileDto
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
     }
 }

@@ -1,0 +1,9 @@
+﻿@model QuestionPageViewModel
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h2>@Model.Question.Title</h2>
+
+Asked by <a href="/user/index/@Model.UserAsking.Id">@Model.UserAsking.Name</a>

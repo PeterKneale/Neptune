@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Neptune.Services.Profiles.Messages;
+using Neptune.Services.Questions.Messages;
 
 namespace Neptune.Apps.Web.Models
 {
@@ -7,7 +8,8 @@ namespace Neptune.Apps.Web.Models
     {
         public Mappings()
         {
-            CreateMap<ProfileDto, ProfileViewModel>();
+            CreateMap<QuestionDto, QuestionViewModel>();
+            CreateMap<ProfileDto, UserViewModel>();
         }
     }
 }

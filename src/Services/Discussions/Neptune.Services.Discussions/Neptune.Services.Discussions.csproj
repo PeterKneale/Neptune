@@ -2,15 +2,20 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.6.2" />
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
     <PackageReference Include="EasyNetQ" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Neptune.Services.Common\Neptune.Services.Common.csproj" />
     <ProjectReference Include="..\Neptune.Services.Discussions.Messages\Neptune.Services.Discussions.Messages.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <ApplicationIcon />
+    <OutputType>Exe</OutputType>
+    <StartupObject>Neptune.Services.Discussions.Program</StartupObject>
   </PropertyGroup>
 
 </Project>

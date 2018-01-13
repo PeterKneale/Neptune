@@ -4,12 +4,9 @@ namespace Neptune.Services.Profiles.Data
 {
     public class ConnectionFactory : BaseConnectionFactory, IConnectionFactory
     {
-        public override string GetConnectionString()
+        public override string GetDatabaseName()
         {
-            var host = "sql";
-            var username = "sa";
-            var password = "Password123%";
-            return $"Server={host};Database=profiles;User id={username};Password={password};MultipleActiveResultSets=true";
+            return "profiles";
         }
     }
 }

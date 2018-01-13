@@ -21,7 +21,6 @@ Question
  - Title
  - Body
  - Views
- - Votes
  - CreatedAt
  - CreatedById
  - CreatedByName

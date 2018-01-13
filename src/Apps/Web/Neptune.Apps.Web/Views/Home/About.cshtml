@@ -5,3 +5,18 @@
 <h3>@ViewData["Message"]</h3>
 
 <p>Use this area to provide additional information.</p>
+<ul>
+    @{
+        var enumerator = Environment.GetEnvironmentVariables().GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            <li>@enumerator.Key : @enumerator.Value</li>
+        }
+    }
+</ul>
+
+<h3>Sample links</h3>
+<h4>Users</h4>
+<a href="/user/index/C084EFA3-D735-A430-A4F2-6919586A491F">/user/index/C084EFA3-D735-A430-A4F2-6919586A491F</a>
+<h4>Questions</h4>
+<a href="/question/index/4CA3CAF7-A613-D5C2-A7DC-DCECB48AB334">/question/index/4CA3CAF7-A613-D5C2-A7DC-DCECB48AB334</a>

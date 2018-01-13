@@ -10,7 +10,7 @@ namespace Neptune.Services.Profiles.Database
         {
             Create.Table(DatabaseSchema.TableProfile)
                 .WithColumn(DatabaseSchema.ColumnId)
-                    .AsInt16()
+                    .AsGuid()
                     .PrimaryKey()
                     .NotNullable()
                 .WithColumn(DatabaseSchema.ColumnName)

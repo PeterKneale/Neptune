@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Autofac.Extensions.DependencyInjection;
+using Gelf.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 
 namespace Neptune.Apps.Web
 {

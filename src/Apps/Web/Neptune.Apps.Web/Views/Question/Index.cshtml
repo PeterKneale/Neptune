@@ -6,4 +6,10 @@
 
 <h2>@Model.Question.Title</h2>
 
-Asked by <a href="/user/index/@Model.UserAsking.Id">@Model.UserAsking.Name</a>
+Asked by 
+<a href="/user/index/@Model.UserAsking.Id">
+    @Model.UserAsking.Name (@Model.UserAsking.UserName)
+    (Gold: @Model.UserAsking.TotalGoldBadges)
+    (Silver: @Model.UserAsking.TotalSilverBadges)
+    (Bronze: @Model.UserAsking.TotalBronzeBadges)
+</a>

@@ -5,11 +5,11 @@ using System;
 
 namespace Neptune.Services.Questions.Data
 {
-    [Table(DatabaseSchema.TableQuestion)]
-    public class QuestionData : BaseData<Guid>
+    [Table(DatabaseSchema.TableAnswer)]
+    public class AnswerData : BaseData<Guid>
     {
-        [Column(DatabaseSchema.ColumnTitle)]
-        public string Title { get; set; }
+        [Column(DatabaseSchema.ColumnQuestionId)]
+        public Guid QuestionId { get; set; }
 
         [Column(DatabaseSchema.ColumnBody)]
         public string Body { get; set; }
@@ -33,11 +33,17 @@ namespace Neptune.Services.Questions.Data
 
         [Column(DatabaseSchema.ColumnUpdatedByName)]
         public string UpdatedByName { get; set; }
-        
-        // Other
-        [Column(DatabaseSchema.ColumnViews)]
-        public int Views { get; set; }
 
+        // Accepted
+        [Column(DatabaseSchema.ColumnAcceptedAt)]
+        public DateTime? AcceptedAt { get; set; }
+
+        [Column(DatabaseSchema.ColumnAcceptedById)]
+        public Guid? AcceptedById { get; set; }
+
+        [Column(DatabaseSchema.ColumnAcceptedByName)]
+        public string AcceptedByName { get; set; }
+        
         [Column(DatabaseSchema.ColumnLastActivity)]
         public DateTime LastActivity { get; set; }
     }

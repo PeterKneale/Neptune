@@ -24,7 +24,6 @@ namespace Neptune.Services.Common.Data
         {
             try
             {
-
                 Transaction.Commit();
             }
             catch

@@ -1,5 +1,4 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.Extensions.Logging;
@@ -24,27 +23,27 @@ namespace Neptune.Services.Common.Bus
 
         public bool TryValidate<T>(T message, out ValidationResult result) where T : IMessage
         {
-            var name = message.GetType().Name;
+            var messageType = message.GetType().Name;
 
             var validator = _context.ResolveOptional<IMessageValidator<T>>();
             if (validator == null)
             {
                 // No validator found, warn and set an empty validation result.
-                _log.LogWarning($"No validator for {name}");
+                _log.LogWarning("No validator for {bus-message}", messageType);
                 result = new ValidationResult();
                 return true;
             }
 
-            _log.LogInformation($"Validating {name}...");
+            _log.LogInformation("Validating {bus-message}...", messageType);
 
             result = validator.Validate(new ValidationContext<T>(message));
             if (!result.IsValid)
             {
-                _log.LogWarning($"Validation failed for {name}.");
+                _log.LogError("Validation failed for {bus-message}", messageType);
                 return false;
             }
 
-            _log.LogInformation($"Validated {name}...");
+            _log.LogInformation("Validated {bus-message}", messageType);
             return true;
         }
     }

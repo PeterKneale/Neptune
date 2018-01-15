@@ -18,6 +18,7 @@ namespace Neptune.Services.Questions
             builder.RegisterType<ConnectionFactory>().As<IConnectionFactory>().SingleInstance();
             builder.RegisterType<UnitOfWorkFactory>().As<IUnitOfWorkFactory<IQuestionUnitOfWork>>().SingleInstance();
             builder.RegisterType<QuestionSource>().As<IQuestionSource>();
+            builder.RegisterType<AnswerSource>().As<IAnswerSource>();
 
             builder.Register(x => x.Resolve<IConnectionFactory>().Open()).As<IDbConnection>();
 

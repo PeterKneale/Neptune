@@ -47,7 +47,7 @@ namespace Neptune.Services.Common.Bus
         {
             Validate(command);
 
-            _log.LogInformation($"Dispatching command {command.GetType().Name}");
+            _log.LogInformation("Dispatching command {bus-message} ", command.GetType().Name);
 
             await _bus.SendAsync(command.GetType().Name, command);
         }
@@ -56,7 +56,7 @@ namespace Neptune.Services.Common.Bus
         {
             Validate(evnt);
 
-            _log.LogInformation($"Dispatching event {evnt.GetType().Name}");
+            _log.LogInformation("Dispatching event {bus-message}", evnt.GetType().Name);
 
             await _bus.PublishAsync(evnt);
         }
@@ -67,7 +67,7 @@ namespace Neptune.Services.Common.Bus
         {
             Validate(query);
 
-            _log.LogInformation($"Dispatching query {query.GetType().Name}");
+            _log.LogInformation("Dispatching query {bus-message}", query.GetType().Name);
             return await _bus.RequestAsync<TQuery, TQueryResult>(query);
         }
 

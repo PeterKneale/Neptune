@@ -67,7 +67,7 @@ namespace Neptune.Services.Questions.Database
                     .AsDateTime()
                     .WithDefault(SystemMethods.CurrentUTCDateTime)
                     .Nullable()
-                .WithColumn(DatabaseSchema.ColumnAcceptedById)
+                .WithColumn(DatabaseSchema.ColumnAcceptedById) // ? is it only the asked who can make this answered?
                     .AsGuid()
                     .Nullable()
                 .WithColumn(DatabaseSchema.ColumnAcceptedByName)
@@ -97,13 +97,7 @@ namespace Neptune.Services.Questions.Database
                 .WithColumn(DatabaseSchema.ColumnUpdatedByName)
                     .AsString(DatabaseSchema.LengthDefault)
                     .Nullable()
-
-                // Other
-                .WithColumn(DatabaseSchema.ColumnViews)
-                    .AsInt32()
-                    .WithDefaultValue(0)
-                    .NotNullable()
-
+                    
                 .WithColumn(DatabaseSchema.ColumnLastActivity)
                     .AsDateTime()
                     .WithDefault(SystemMethods.CurrentUTCDateTime)

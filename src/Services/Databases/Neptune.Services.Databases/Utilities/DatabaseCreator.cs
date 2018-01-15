@@ -34,22 +34,25 @@ namespace Neptune.Services.Databases
 
         private void Provision(string masterConnectionString, string appConnectionString)
         {
-            try
+            var database = GetDatabaseName(appConnectionString);
+            using (_log.BeginScope(("database", database)))
             {
-                var database = GetDatabaseName(appConnectionString);
-                _log.LogInformation($"Creating database {database} if necessary");
-
-                if (CheckDatabaseExists(masterConnectionString, database))
+                try
                 {
-                    _log.LogInformation($"Database {database} already exists");
-                    return;
+                    _log.LogInformation($"Provisioning database");
+
+                    if (CheckDatabaseExists(masterConnectionString, database))
+                    {
+                        return;
+                    }
+
+                    CreateDatabase(masterConnectionString, database);
                 }
-                CreateDatabase(masterConnectionString, database);
-            }
-            catch (Exception ex)
-            {
-                _log.LogError(ex, "Error provisioning database");
-                throw;
+                catch (Exception ex)
+                {
+                    _log.LogError(ex, "Error provisioning database");
+                    throw;
+                }
             }
         }
 

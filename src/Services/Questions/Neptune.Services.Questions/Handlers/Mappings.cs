@@ -8,7 +8,11 @@ namespace Neptune.Services.Questions.Handlers
     {
         public Mappings()
         {
-            CreateMap<QuestionData, QuestionDto>();
+            CreateMap<QuestionData, QuestionDto>()
+                .ForMember(opt=>opt.TotalStars, x=>x.Ignore())
+                .ForMember(opt => opt.TotalVotes, x => x.Ignore())
+                .ForMember(opt => opt.TotalAnswers, x => x.Ignore());
+            CreateMap<AnswerData, AnswerDto>();
         }
     }
 }

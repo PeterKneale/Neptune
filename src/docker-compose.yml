@@ -21,6 +21,14 @@ services:
     networks:
       - neptune_network
 
+  neptune.services.databases:
+    image: neptune.services.databases
+    build:
+      context: .
+      dockerfile: Services/Databases/Neptune.Services.Databases/Dockerfile
+    networks:
+      - neptune_network
+
   neptune.services.profiles:
     image: neptune.services.profiles
     build:
@@ -29,14 +37,6 @@ services:
     networks:
       - neptune_network
 
-  neptune.services.databases:
-    image: neptune.services.databases
-    build:
-      context: .
-      dockerfile: Services/Databases/Neptune.Services.Databases/Dockerfile
-    networks:
-      - neptune_network
-      
   neptune.services.questions:
     image: neptune.services.questions
     build:
@@ -45,6 +45,15 @@ services:
     networks:
       - neptune_network
 
+  neptune.services.identities:
+    image: neptune.services.identities
+    build:
+      context: .
+      dockerfile: Services/Identities/Neptune.Services.Identities/Dockerfile
+    networks:
+      - neptune_network
+
 networks:
   neptune_network:
     external: true
+

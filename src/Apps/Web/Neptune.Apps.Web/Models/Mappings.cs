@@ -9,7 +9,6 @@ namespace Neptune.Apps.Web.Models
         public Mappings()
         {
             CreateMap<QuestionDto, QuestionViewModel>();
-            CreateMap<ProfileDto, UserViewModel>();
         }
     }
 }

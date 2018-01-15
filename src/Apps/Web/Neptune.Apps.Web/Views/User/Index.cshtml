@@ -1,7 +1,11 @@
 ﻿@model UserPageViewModel
 
 @{
-    ViewData["Title"] = "View";
+    ViewData["Title"] = Model.User.Name;
 }
 
-<h2>@Model.Profile.Name</h2>
+<h2>@Model.User.Name (@Model.User.UserName)</h2>
+
+Gold Badges: @Model.User.TotalGoldBadges
+Silver Badges: @Model.User.TotalSilverBadges
+Bronze Badges: @Model.User.TotalBronzeBadges

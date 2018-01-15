@@ -139,43 +139,43 @@ namespace Neptune.Services.Common.Bus
         {
             var messageType = message.GetType().Name;
             var payload = JsonConvert.SerializeObject(message);
-            _log.LogInformation("Executing {messageType}", messageType);
-            _log.LogDebug("Executing {messageType} with body {payload}", messageType, payload);
+            _log.LogInformation("Executing {bus-message}", messageType);
+            _log.LogDebug("Executing {bus-message} with body {bus-payload-request}", messageType, payload);
         }
 
         protected void AnnounceResponse(IMessage query, IMessage response)
         {
-            var name = query.GetType().Name;
-            var messageQuery = JsonConvert.SerializeObject(query);
-            var messageResponse = JsonConvert.SerializeObject(response);
-            _log.LogDebug($"Response to {name} with query {messageQuery} is {messageResponse}");
+            var messageType = query.GetType().Name;
+            var messagePayload = JsonConvert.SerializeObject(query);
+            var messageResponsePayload = JsonConvert.SerializeObject(response);
+            _log.LogDebug("Response to {bus-message} with query {bus-payload-request} is {bus-payload-response}", messageType, messagePayload, messageResponsePayload);
         }
 
         protected void AnnounceHandlerFound(IMessage message, IHandler handler)
         {
-            var messageName = message.GetType().Name;
-            var handlerName = handler.GetType().Name;
-            _log.LogInformation($"Found handler {handlerName} for {messageName}");
+            var messageType = message.GetType().Name;
+            var handlerType = handler.GetType().Name;
+            _log.LogInformation("Found handler {bus-handler} for {bus-message}", handlerType, messageType);
         }
 
         protected void AnnounceExecuted(IMessage message, IHandler handler, long ms)
         {
             var messageType = message.GetType().Name;
             var handlerType = handler.GetType().Name;
-            _log.LogInformation($"Handler {handlerType} executed {messageType}. Duration: {ms}ms.", handlerType, messageType);
+            _log.LogInformation("Handler {bus-handler} executed {bus-message}. Duration: {bus-duration}ms.", handlerType, messageType, ms);
         }
 
         protected void AnnounceFailed(IHandler handler, IMessage message, Exception ex)
         {
-            var messageName = message.GetType().Name;
-            var handlerName = handler.GetType().Name;
-            _log.LogError($"Handler {handlerName} executed {messageName} and threw exception.{ex.Message}. {ex.StackTrace}");
+            var messageType = message.GetType().Name;
+            var handlerType = handler.GetType().Name;
+            _log.LogError(ex, "Handler {bus-handler} executed {bus-message} and threw exception.", messageType, handlerType);
         }
 
         protected void AnnounceNoHandlerFound(IMessage message)
         {
-            var messageName = message.GetType().Name;
-            _log.LogError($"No handler could be foud for {messageName}.");
+            var messageType = message.GetType().Name;
+            _log.LogError("No handler could be foud for {bus-message}.", messageType);
         }
     }
 }

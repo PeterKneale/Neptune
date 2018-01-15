@@ -13,7 +13,6 @@
     <PackageReference Include="AutoMapper" Version="6.2.2" />
     <PackageReference Include="Gelf.Extensions.Logging" Version="1.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" PrivateAssets="All" />
   </ItemGroup>
 
@@ -25,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Services\Common\Neptune.Services.Common\Neptune.Services.Common.csproj" />
+    <ProjectReference Include="..\..\..\Services\Identities\Neptune.Services.Identities.Messages\Neptune.Services.Identities.Messages.csproj" />
     <ProjectReference Include="..\..\..\Services\Profiles\Neptune.Services.Profiles.Messages\Neptune.Services.Profiles.Messages.csproj" />
     <ProjectReference Include="..\..\..\Services\Questions\Neptune.Services.Questions.Messages\Neptune.Services.Questions.Messages.csproj" />
   </ItemGroup>

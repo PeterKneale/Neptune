@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Neptune.Services.Common\Neptune.Services.Common.csproj" />
+    <ProjectReference Include="..\..\Identities\Neptune.Services.Identities.Database\Neptune.Services.Identities.Database.csproj" />
     <ProjectReference Include="..\..\Profiles\Neptune.Services.Profiles.Database\Neptune.Services.Profiles.Database.csproj" />
     <ProjectReference Include="..\..\Questions\Neptune.Services.Questions.Database\Neptune.Services.Questions.Database.csproj" />
   </ItemGroup>

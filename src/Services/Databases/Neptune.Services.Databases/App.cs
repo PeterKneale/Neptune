@@ -26,6 +26,7 @@ namespace Neptune.Services.Databases
         {
             Provision(_config.QuestionsConnectionString, typeof(Questions.Database.DatabaseSchema));
             Provision(_config.ProfilesConnectionString, typeof(Profiles.Database.DatabaseSchema));
+            Provision(_config.IdentitiesConnectionString, typeof(Identities.Database.DatabaseSchema));
         }
 
         private void Provision(string connection, Type migration)

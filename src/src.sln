@@ -80,6 +80,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Neptune.Apps.WebAPI.Models"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Neptune.Apps.WebAPI.Tests", "Apps\WebAPI\Neptune.Apps.WebAPI.Tests\Neptune.Apps.WebAPI.Tests.csproj", "{F28C761A-E668-4FAA-820C-811682285162}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neptune.Services.Identities.Database", "Services\Identities\Neptune.Services.Identities.Database\Neptune.Services.Identities.Database.csproj", "{AA50C71B-746C-4679-8C74-23349A6AA965}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -390,6 +392,18 @@ Global
 		{F28C761A-E668-4FAA-820C-811682285162}.Release|x64.Build.0 = Release|Any CPU
 		{F28C761A-E668-4FAA-820C-811682285162}.Release|x86.ActiveCfg = Release|Any CPU
 		{F28C761A-E668-4FAA-820C-811682285162}.Release|x86.Build.0 = Release|Any CPU
+		{AA50C71B-746C-4679-8C74-23349A6AA965}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA50C71B-746C-4679-8C74-23349A6AA965}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA50C71B-746C-4679-8C74-23349A6AA965}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AA50C71B-746C-4679-8C74-23349A6AA965}.Debug|x64.Build.0 = Debug|Any CPU
+		{AA50C71B-746C-4679-8C74-23349A6AA965}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AA50C71B-746C-4679-8C74-23349A6AA965}.Debug|x86.Build.0 = Debug|Any CPU
+		{AA50C71B-746C-4679-8C74-23349A6AA965}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA50C71B-746C-4679-8C74-23349A6AA965}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA50C71B-746C-4679-8C74-23349A6AA965}.Release|x64.ActiveCfg = Release|Any CPU
+		{AA50C71B-746C-4679-8C74-23349A6AA965}.Release|x64.Build.0 = Release|Any CPU
+		{AA50C71B-746C-4679-8C74-23349A6AA965}.Release|x86.ActiveCfg = Release|Any CPU
+		{AA50C71B-746C-4679-8C74-23349A6AA965}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -428,6 +442,7 @@ Global
 		{63266F8F-170E-46DB-8E62-2ECF90781118} = {1153BA2F-FCD2-4C52-A21B-FCB5C1B2B115}
 		{1E8FE668-EB6A-4910-A5BD-15C2BD577BDD} = {1153BA2F-FCD2-4C52-A21B-FCB5C1B2B115}
 		{F28C761A-E668-4FAA-820C-811682285162} = {1153BA2F-FCD2-4C52-A21B-FCB5C1B2B115}
+		{AA50C71B-746C-4679-8C74-23349A6AA965} = {D2356AF1-55DB-4BE6-8684-92DCFFBAE32B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6B709F53-1905-4018-A866-A1CDF30CFA2A}

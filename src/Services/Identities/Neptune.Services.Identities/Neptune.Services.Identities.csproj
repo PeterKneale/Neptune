@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Neptune.Services.Common\Neptune.Services.Common.csproj" />
+    <ProjectReference Include="..\Neptune.Services.Identities.Database\Neptune.Services.Identities.Database.csproj" />
     <ProjectReference Include="..\Neptune.Services.Identities.Messages\Neptune.Services.Identities.Messages.csproj" />
   </ItemGroup>
 

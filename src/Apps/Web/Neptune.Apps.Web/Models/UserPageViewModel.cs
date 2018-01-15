@@ -4,13 +4,17 @@ namespace Neptune.Apps.Web.Models
 {
     public class UserPageViewModel
     {
-        public UserViewModel Profile { get; set; }
+        public UserViewModel User { get; set; }
     }
 
     public class UserViewModel
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
+        public string UserName { get; set; }
+        public int TotalGoldBadges { get; set; }
+        public int TotalSilverBadges { get; set; }
+        public int TotalBronzeBadges { get; set; }
     }
 
     public class QuestionPageViewModel

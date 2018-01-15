@@ -3,34 +3,31 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Neptune.Apps.Web.Models;
+using Neptune.Apps.Web.Services;
 using Neptune.Services.Common.Bus;
+using Neptune.Services.Identities.Messages;
 using Neptune.Services.Profiles.Messages;
 
 namespace Neptune.Apps.Web.Controllers
 {
     public class UserController : Controller
     {
-        private readonly IQueryDispatcher _queries;
+        private readonly IUserService users;
 
-        public UserController(IQueryDispatcher queries)
+        public UserController(IUserService users)
         {
-            _queries = queries;
+            this.users = users;
         }
         
         public async Task<IActionResult> Index(Guid id)
         {
-            var response = await _queries.Request<GetProfileRequest, GetProfileResponse>(new GetProfileRequest { Id = id });
-            var profile = response.Profile;
+            var user = await users.Get(id);
 
-            if(profile == null)
-            {
-                return NotFound();
-            }
-            
             var page = new UserPageViewModel
             {
-                Profile = Mapper.Map<ProfileDto, UserViewModel>(profile)
+                User = user
             };
+
             return View(page);
         }
     }

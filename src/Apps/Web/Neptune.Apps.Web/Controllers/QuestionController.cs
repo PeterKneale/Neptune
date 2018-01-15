@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -28,16 +29,27 @@ namespace Neptune.Apps.Web.Controllers
                 return NotFound();
             }
 
+            
+            var profileResponse = await _queries.Request<GetProfileRequest, GetProfileResponse>(new GetProfileRequest { Id = question.CreatedById });
+            var profile = profileResponse.Profile;
+
             var page = new QuestionPageViewModel
             {
-                Question = Mapper.Map<QuestionDto, QuestionViewModel>(question)
+                Question = new QuestionViewModel
+                {
+                    Id = question.Id,
+                    Title = question.Title
+                },
+                UserAsking = new UserViewModel
+                {
+                    Id = profile.Id,
+                    Name = profile.Name,
+                    TotalGoldBadges = profile.Badges.Count(x => x.Badge.Rank == BadgeRank.Gold),
+                    TotalSilverBadges = profile.Badges.Count(x => x.Badge.Rank == BadgeRank.Silver),
+                    TotalBronzeBadges = profile.Badges.Count(x => x.Badge.Rank == BadgeRank.Bronze)
+                }
             };
 
-            var profileResponse = await _queries.Request<GetProfileRequest, GetProfileResponse>(new GetProfileRequest { Id = question.CreatedById });
-            if(profileResponse.Profile != null)
-            {
-                page.UserAsking = Mapper.Map<ProfileDto, UserViewModel>(profileResponse.Profile);
-            }
             return View(page);
         }
     }
